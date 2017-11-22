@@ -1,7 +1,27 @@
-﻿
+﻿@model ComicBookGallery.Models.ComicBook[]
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Comic Books";
 }
 
-<h2>Index</h2>
+<!--By using the ViewBag title property we've prevented the unnecessary duplication of the 
+    string literal, ComicBooks-->
+<h2>@ViewBag.Title</h2>
+
+<div class="row">
+    <!--Our array of comicBooks is available to us via the view's model property -->
+    @foreach (var comicBook in Model) 
+    {
+        <div class="col-md-3">
+            <h4>@comicBook.DisplayText</h4>
+            <img src="/Images/@comicBook.CoverImageFileName"
+                 alt="@comicBook.DisplayText"
+                 class="img-responsive" />
+        </div>
+    }
+
+
+</div>
+
+
 
